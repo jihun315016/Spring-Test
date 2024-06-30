@@ -1,0 +1,119 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* 사용자 정의 속성 START */
+.custom-base-container {
+    margin: 30px 50px; /* 가로 세로 */
+}
+
+.custom-container {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.book-card-img-top {
+    height: 20vh;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.book-card-title-container {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    height: 3.2em;
+}
+
+.book-card-text-container {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.nav-tabs .nav-link {
+    font-size: 1.25rem; 
+}
+
+.nav-link {
+    color: #909090; 
+}
+
+.nav-link.active {
+    color: #000000 !important; /* 활성 탭의 색상을 부트스트랩 기본 파란색으로 유지 */
+}
+
+.input-text-search {
+    
+}
+
+.btn-search {
+    width: 100px;
+    margin-left: 10px;
+}
+
+.user-image {
+    height: 100%;
+    object-fit: contain;
+}
+
+.text-truncate {
+    display: block;     
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.max-width30 {
+    max-width: 300px;
+}
+
+.max-width40 {
+    max-width: 400px;
+}
+
+.max-width50 {
+    max-width: 500px;
+}
+
+.custom-link {
+    color: black; 
+    text-decoration: none; 
+}
+
+.custom-link:hover {
+    color: black;
+    text-decoration: underline; 
+}
+/* 사용자 정의 속성 END */
