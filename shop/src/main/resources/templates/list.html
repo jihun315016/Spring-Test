@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 경로 /부터 시작하면 static 폴더 -->
+    <link rel="stylesheet" href="/main.css">
+
+</head>
+<body>
+<!-- div가 아니어도 그냥 아무 html 태그 써도 됌 -->
+<!-- nav.html 파일의 navbar 이름의 UI로 덮어써줌 -->
+<div th:replace="~{nav.html::navbar}"></div>
+
+<div class="card" th:each="i : ${items}"> <!-- th:each="작명 : ${변수명}" -->
+    <img src="https://placehold.co/300">
+    <div>
+        <!--이렇게하면 text의 값이 바지 대신 들어간다.-->
+        <h4 th:text="${i.title}"></h4>
+        <a th:href="@{'/detail/' + ${i.id}}">링크</a>
+        <a th:href="@{'/edit/' + ${i.id}}">edit️</a> <!-- Thymeleaf에서 상대 경로는 @{} 써야함 -->
+        <span th:onclick="fetch('/item?id=[[${i.id}]]', { method : 'DELETE' } )
+                            .then(r => r.text())
+                            .then((a) => {
+                                location.reload();
+                                console.log(a);
+                            })"
+        >🗑delete️</span>
+        <!-- .then(r => r.json) : 서버에서 오는 데이터가 json인지 문자열인지에 따라 json이라면 r.json() 해야함-->
+        <!-- delete 요청에서 body가 잘 전달 안 되는 경우가 있어서 쿼리스트링으로 날린거 -->
+        <!-- 타임리프 문법 쓰려고 th: 붙이는 거 / 대괄호 2개 + $ -> 변수 쓸 수 있음 -->
+        <p th:text="${i.price}"></p>
+    </div>
+</div>
+<button class="btn">테스트용</button>
+
+<script>
+    document.querySelectorAll('.btn')[0].addEventListener('click', function(){
+      fetch('/test1')
+    })
+
+    // list 화면 뜨면
+    // url에 ajax를 이용하여 get 요청
+    // fetch('/test1')
+</script>
+</body>
+</html>
+

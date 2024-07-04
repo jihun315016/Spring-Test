@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 경로 /부터 시작하면 static 폴더 -->
+    <link rel="stylesheet" href="/main.css">
+
+</head>
+<body>
+<div th:replace="~{nav.html::navbar}"></div>
+
+<!-- form 태그는 GET이랑 POST밖에 못 날림, 그래서 PUT 못 함 -->
+<form action="/edit" method="POST">
+    <input name="id" th:value="${data.id}" style="display:none">
+    <input name="title" th:value="${data.title}">
+    <input name="price" th:value="${data.price}">
+    <button type="submit">버튼</button>
+</form>
+</body>
+</html>

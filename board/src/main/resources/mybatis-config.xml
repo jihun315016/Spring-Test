@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!--com.codingrecipe.board.dto.BoardDTO를 board라는 별칭을 짓겠다.-->
+        <!--board-mapper.xml 파일에서 parameterType에 board를 쓸 수 있게 해줌-->
+        <!--이거 안 하면 com.codingrecipe.board.dto.BoardDTO 이렇게 전체 경로를 작성줘야 함-->
+        <typeAlias type="com.codingrecipe.board.dto.BoardDTO" alias="board"></typeAlias>
+        <!-- com.employee.EmployeeDTO 클래스에 대해 employee 별칭 지정 -->
+        <!-- 지정된 별칭은 매퍼 파일에서 사용할 수 있다. -->
+        <typeAlias type="com.codingrecipe.board.EmployeeDTO" alias="employee"></typeAlias>
+    </typeAliases>
+</configuration>

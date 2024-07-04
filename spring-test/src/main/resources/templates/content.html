@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layoutPage.html}">
+        <!-- layout:decorate -> 공통 양식을 의미하는 레리아웃 파일 지정 -->
+        <!-- 지정된 파일을 layout 이라는 이름으로 사용 -->
+<head>
+  <title>Content page</title>
+</head>
+<body>
+<!-- layout 파일의 content 섹션 정의 -->
+<section layout:fragment="content">
+  <p>This is a paragraph from the content page</p>
+</section>
+</body>
+</html>
