@@ -2,6 +2,7 @@ package com.example.shop.Item;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -128,8 +129,12 @@ public class ItemController {
         System.out.println("요청 들어옴");
         return "redirect:/list";
     }
+
+    // 해싱 코드
+    @GetMapping("/test2")
+    String test2() {
+        var result = new BCryptPasswordEncoder().encode("해싱할 문자");
+        System.out.println(result);
+        return "redirect:/list";
+    }
 }
-// jpa 사용하기
-// 1. repository 만들기
-// 2. 원하는 클래스에 repository 등록
-// 3. repository.문법() 쓰기
