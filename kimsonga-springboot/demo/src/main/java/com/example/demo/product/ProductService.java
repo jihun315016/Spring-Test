@@ -22,7 +22,7 @@ public class ProductService {
         productRepository.save(productName);
     }
 
-    public void makeConnection() {
-        productRepository.makeConnection();
-    }
+//    public void makeConnection() {
+//        productRepository.makeConnection();
+//    }
 }

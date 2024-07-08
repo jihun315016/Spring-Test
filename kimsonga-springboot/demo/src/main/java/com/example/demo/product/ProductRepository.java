@@ -14,14 +14,14 @@ import javax.sql.DataSource;
 public class ProductRepository {
 
     // 디비 속성값을 들고, 자바-디비 간 터널을 뚫어줌
-    @Autowired
-    DataSource dataSource;
+//    @Autowired
+//    DataSource dataSource;
 
     // DataSource로 터널 뚫어보기 == db 커넥션 만들기
     // 쓸 일 잘 없으니까 가볍게 보기
-    public void makeConnection() {
-        DataSourceUtils.getConnection(dataSource);
-    }
+//    public void makeConnection() {
+//        DataSourceUtils.getConnection(dataSource);
+//    }
 
     private Map<Integer, String> db = new HashMap<>();
     private int id = 1;
