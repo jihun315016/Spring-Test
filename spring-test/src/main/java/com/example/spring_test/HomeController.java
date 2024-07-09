@@ -10,4 +10,10 @@ public class HomeController {
     public String home() {
         return "content";
     }
+
+    @ResponseBody
+    @GetMapping("/test")
+    public String test() {
+        return "content.html";
+    }
 }
