@@ -40,6 +40,13 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authorize) ->
                 authorize.requestMatchers("/**").permitAll()
         );
+
+        // 폼으로 로그인하겠다는 뜻
+        http.formLogin((formLogin) -> formLogin.loginPage("/login")
+                .defaultSuccessUrl("/") // 로그인 성공시 이동할 url
+                .failureUrl("/fail") // 로그인 실패시 이동할 url
+                // 이거 안 쓰면 실패시 기본적으로 /login?error 페이지로 이동함, 원래 코드는 fail 안썼음
+        );
         return http.build();
     }
 }
