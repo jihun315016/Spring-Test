@@ -10,6 +10,8 @@ import com.example.spring_test.book_sample.service.BookHomeService;
 import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class BookHomeController {
@@ -17,8 +19,8 @@ public class BookHomeController {
     
     @GetMapping("/book_sample")
     public String Index(Model model) throws IOException {
-        ItemListDTO itemListDTO = homeService.findData();
-        model.addAttribute("data", itemListDTO);
+        List<ItemListDTO> list = homeService.findData();
+        model.addAttribute("data", list);
         return "book_sample/book_index.html";
     }
 }

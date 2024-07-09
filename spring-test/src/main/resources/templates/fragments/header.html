@@ -2,5 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <footer th:fragment="header">
     <p>This is header</p>
+    <script>
+        fetch('/test', { 
+            method : 'GET' 
+        })
+        .then(r => r.text())
+        .then((a) => {
+            //location.reload();
+            console.log(a);
+        })
+    </script>
 </footer>
 </html>

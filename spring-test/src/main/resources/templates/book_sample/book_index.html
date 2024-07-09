@@ -10,7 +10,19 @@
 <body>
     <!-- layout 파일의 content 섹션 정의 -->
     <section layout:fragment="content">
-        <div th:each="i : ${data.item}">
+        <div th:each="i : ${data.get(0).item}">
+            <p th:text="${i.title}"></p>
+            <p th:text="${i.author}"></p>
+            <p th:text="${i.publisher}"></p>
+            <p th:text="${i.pubDate}"></p>
+            <p th:text="${i.categoryName}"></p>
+            <p th:text="${i.cover}"></p>
+            <p>=====</p>
+        </div>
+
+        <h3>==================================================</h3>
+
+        <div th:each="i : ${data.get(1).item}">
             <p th:text="${i.title}"></p>
             <p th:text="${i.author}"></p>
             <p th:text="${i.publisher}"></p>
