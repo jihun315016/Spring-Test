@@ -47,6 +47,14 @@ public class SecurityConfig {
                 .failureUrl("/fail") // 로그인 실패시 이동할 url
                 // 이거 안 쓰면 실패시 기본적으로 /login?error 페이지로 이동함, 원래 코드는 fail 안썼음
         );
+
+        // 로그아웃 하는 방법
+        http.logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID") // 로그아웃 시 세션 쿠키를 삭제합니다.
+                .invalidateHttpSession(true)); // 로그아웃 시 세션을 무효화합니다.
+
         return http.build();
     }
 }

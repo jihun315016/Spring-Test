@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+
+</head>
+<body>
+<div th:replace="~{nav.html::navbar}"></div>
+
+<h4>마이페이지임</h4>
+
+<!-- 타임리프로 로그인된 유저 정보 넣는 방법 -->
+<!-- 이렇게하면 이 안에 로그인 된 유저의 정보가 들어있음 -->
+<div sec:authentication="principal"></div>
+<div sec:authentication="principal.username"></div>
+<div sec:authorize="hasAuthority('일반유저')">hello</div> <!-- 이 유저가 일반유저 권한을 가지고 있는 경우에만 hello 보여줌 -->
+<div sec:authorize="isAuthenticated()">world</div> <!-- 유저가 로그인 한 경우만 world 보여줌 -->
+<div sec:authorize="isAnonymous()">home</div> <!-- 유저가 로그인 안 한 경우만 home 보여줌 -->
+</body>
+</html>
