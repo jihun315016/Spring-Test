@@ -1,37 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutPage.html}">
-<!-- layout:decorate -> 공통 양식을 의미하는 레리아웃 파일 지정 -->
-<!-- 지정된 파일을 layout 이라는 이름으로 사용 -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="book_sample/common/layout.html">
 
 <head>
-    <title>Content page</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-
 <body>
-    <!-- layout 파일의 content 섹션 정의 -->
-    <section layout:fragment="content">
-        <div th:each="i : ${data.get(0).item}">
-            <p th:text="${i.title}"></p>
-            <p th:text="${i.author}"></p>
-            <p th:text="${i.publisher}"></p>
-            <p th:text="${i.pubDate}"></p>
-            <p th:text="${i.categoryName}"></p>
-            <p th:text="${i.cover}"></p>
-            <p>=====</p>
-        </div>
+<section layout:fragment="content">
+    <div th:each="i : ${data.get(0).item}">
+        <p th:text="${i.title}"></p>
+        <p th:text="${i.author}"></p>
+        <p th:text="${i.publisher}"></p>
+        <p th:text="${i.pubDate}"></p>
+        <p th:text="${i.categoryName}"></p>
+        <p th:text="${i.cover}"></p>
+        <p>=====</p>
+    </div>
 
-        <h3>==================================================</h3>
+    <h3>==================================================</h3>
 
-        <div th:each="i : ${data.get(1).item}">
-            <p th:text="${i.title}"></p>
-            <p th:text="${i.author}"></p>
-            <p th:text="${i.publisher}"></p>
-            <p th:text="${i.pubDate}"></p>
-            <p th:text="${i.categoryName}"></p>
-            <p th:text="${i.cover}"></p>
-            <p>=====</p>
-        </div>
-    </section>
+    <div th:each="i : ${data.get(1).item}">
+        <p th:text="${i.title}"></p>
+        <p th:text="${i.author}"></p>
+        <p th:text="${i.publisher}"></p>
+        <p th:text="${i.pubDate}"></p>
+        <p th:text="${i.categoryName}"></p>
+        <p th:text="${i.cover}"></p>
+        <p>=====</p>
+    </div>
+</section>
 </body>
-
 </html>
