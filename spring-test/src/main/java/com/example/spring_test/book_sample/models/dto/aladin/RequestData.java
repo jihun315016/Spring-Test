@@ -2,9 +2,11 @@ package com.example.spring_test.book_sample.models.dto.aladin;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Builder
 @Getter
+@Setter
 public class RequestData {
     private String url;
     private String method;

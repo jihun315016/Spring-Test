@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <section th:fragment="sidebar">
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-        <div class="menu_section">
+        <!-- <div class="menu_section">
             <h3>General</h3>
             <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
@@ -38,6 +38,42 @@
                 </li>
             </ul>
         </div>
+    </div> -->
+
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <h3>General</h3>
+            <ul class="nav side-menu" id="menu-list">
+            </ul>
+        </div>
     </div>
+
+    <script>
+        fetch('/book_menu', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            const menuContainer = document.getElementById('menu-container');
+    
+            data.forEach(menu => {
+                const menuItem = document.createElement('li');
+                const menuLink = document.createElement('a');
+                const menuSpan = document.createElement('span');
+    
+                menuLink.innerHTML = `<i class="fa fa-${menu.level === 1 ? 'home' : 'edit'}"></i> ${menu.menuName} <span class="fa fa-chevron-down"></span>`;
+                menuLink.href = menu.path;
+    
+                if (menu.level === 2) {
+                    const childMenu = document.createElement('ul');
+                    childMenu.classList.add('nav', 'child_menu');
+                    menuItem.appendChild(childMenu);
+                }
+    
+                menuItem.appendChild(menuLink);
+                menuContainer.appendChild(menuItem);
+            });
+        })
+        .catch(error => console.error('Error fetching menus:', error));
+    </script>
 </section>
 </html>

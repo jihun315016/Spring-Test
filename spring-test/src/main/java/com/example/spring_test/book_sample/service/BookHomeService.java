@@ -27,7 +27,7 @@ public class BookHomeService {
 
         ItemListCondition condition = ItemListCondition.builder()
                 .TTBKey(Secret.apikey)
-                .QueryType("ItemNewAll")
+                .QueryType("Bestseller")
                 .SearchTarget("Book")
                 .MaxResults(6)
                 .Cover("Big")
@@ -53,13 +53,13 @@ public class BookHomeService {
             .userAgent("Mozilla/5.0")
             .build();
 
-            System.out.println(requestData.getUrl());
         list.add(Utility.<ItemListDTO>getRequest(requestData, ItemListDTO.class));
 
-        condition.setQueryType("Bestseller");
+        condition.setQueryType("ItemNewAll");
         map = Utility.getMapByClass(condition);
+        urlParam =  Utility.getUrlParameterFormat(map);
+        requestData.setUrl(baseUrl + urlParam);
         list.add(Utility.<ItemListDTO>getRequest(requestData, ItemListDTO.class));
-
         return list;
     }
 }
