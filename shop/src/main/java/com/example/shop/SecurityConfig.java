@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 // 아무 클래스에나 아래 두 개의 어노테이션을 붙여주면 스프링 시큐리티의 설정들을 지정할 수 있다.
 @Configuration
@@ -17,6 +19,14 @@ public class SecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    // csrf 쓰고싶으면 만들어야 하는거
+    @Bean
+    public CsrfTokenRepository csrfTokenRepository() {
+        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+        repository.setHeaderName("X-XSRF-TOKEN");
+        return repository;
     }
 
     // @Bean는 클래스가 아니라 메서드 위에 작성하는 것
@@ -34,7 +44,19 @@ public class SecurityConfig {
         // 이게 서버측의 문자열이랑 맞는지 검사하고 맞으면 통과시켜주는 식
         // jwt를 사용하는 경우 jwt 입장권을 직접 헤더에 넣어서 보내면 csrf 문제 해결
         // 그래서 jwt를 쓰는 사람은 이걸 끄는 경우가 많고 세션 방식이면 키는 게 좋음, 근데 일단은 꺼둘거
-        http.csrf((csrf) -> csrf.disable());
+        
+         http.csrf((csrf) -> csrf.disable());
+        // 1. csrf 쓰고싶으면 위에 http.csrf((csrf) -> csrf.disable()); 주석하고
+        // 2. csrfTokenRepository 메서드 만들기
+        // 3. 모든 html 파일 form 태그 안에 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> 추가하기
+        // -> 폼을 전송할 때 hidden 데이터도 함께 전송 -> 서버는 이 랜덤 문자열이 서버에서 발급했던거랑 맞는지 확인해서 맞으면 통과
+        // -> 이게 csrf 보안 기능
+        // 근데 csrf를 켜두면 ajax 요청할 때도 csrf 토큰을 집어넣어서 요청을 날려야 함
+        // ajax에서 토큰을 집어넣는 법은 인터넷에 많으니까 찾아보기
+        // 강의를 진행해야 하기 때문에 csrf는 끄고 진도나갈 예정
+//        http.csrf(csrf -> csrf.csrfTokenRepository(csrfTokenRepository())
+//                .ignoringRequestMatchers("/login") // csrf 기능을 끌 페이지
+//        );
 
         // 특정 페이지에 로그인 검사를 할지말지 결정
         // /** : 모든 url

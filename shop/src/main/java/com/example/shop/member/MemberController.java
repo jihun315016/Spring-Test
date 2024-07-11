@@ -50,6 +50,10 @@ public class MemberController {
         System.out.println(auth);
         System.out.println(auth.getName()); // kim
         System.out.println(auth.isAuthenticated()); // true -> 이게 true면 페이지 보여주는 식으로 할 수 있음
+
+        CustomerUser result = (CustomerUser)auth.getPrincipal();
+        System.out.println(result.displayName);
+        // 세션 정보를 디비에 저장하고 싶으면 spring-session-jdbc 라이브러리 찾아보기
         return "mypage.html";
     }
 }
