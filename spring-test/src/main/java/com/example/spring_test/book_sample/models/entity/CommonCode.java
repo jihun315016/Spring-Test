@@ -1,7 +1,7 @@
 package com.example.spring_test.book_sample.models.entity;
 
-import groovy.transform.builder.Builder;
 import lombok.Getter;
+import lombok.Builder;
 
 @Builder
 @Getter

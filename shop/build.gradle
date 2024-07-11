@@ -29,11 +29,12 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	// 스프링 시큐리티 라이브러리 / 타임리프에서 스프링 시큐리티를 사용할 수 있게 도와주는 라이브러리
-	// 설치하고 localhost/list 이런데 들어가면 모든 페이지를 로그인 창으로 막아줌
+	// Spring Security 라이브러리
+	// 설치하는 순간 모든 페이지에서 로그인 창으로 막아줌, 설정 파일에서 조정 가능
 	// 콘솔창에 기본 계정 정보 알려주니까 없으면 그거 쓰면 됌(아이디는 user)
 	// -> Using generated security password: 69d0b305-14cd-486f-bc56-d381364f3d9c
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	// thymeleaf 템플릿 엔진과 Spring Security를 호환해주는 라이브러리
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
 }
 

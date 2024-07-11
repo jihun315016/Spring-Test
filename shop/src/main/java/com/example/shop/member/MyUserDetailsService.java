@@ -34,5 +34,8 @@ public class MyUserDetailsService implements UserDetailsService {
 
         // 유저아이디, 비번, 권한
         return new User(user.getUsername(), user.getPassword(), authorities);
+
+        // 여기서 반환된 UserDetails 객체를 SecurityConfig에서 주입한
+        // PasswordEncoder 객체를 통해 비밀번호 검사
     }
 }

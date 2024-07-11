@@ -19,7 +19,9 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // 이렇게 하면 스프링이 가져가서 Bean(스프링이 뽑은 오브젝트)으로 만들어줌
+    // @Bean는 클래스가 아니라 메서드 위에 작성하는 것
+    // 이거 쓰면 메서드가 반환하는 타입을 객체를 Bean(스프링이 뽑은 오브젝트)으로 등록한다.
+    // 빈으로 등록할 때는 아무 접근지정자를 써도 의미가 없다.
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // FilterChain은 유저의 요청과 서버의 응답 사이에 자동으로 실행해주고 싶은 코드를 담는 곳
@@ -41,7 +43,7 @@ public class SecurityConfig {
                 authorize.requestMatchers("/**").permitAll()
         );
 
-        // 폼으로 로그인하겠다는 뜻
+        // HTML의 <form> 태그를 이용한 로그인 설정
         http.formLogin((formLogin) -> formLogin.loginPage("/login")
                 .defaultSuccessUrl("/") // 로그인 성공시 이동할 url
                 .failureUrl("/fail") // 로그인 실패시 이동할 url

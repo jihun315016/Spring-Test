@@ -24,6 +24,8 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -35,8 +37,18 @@ dependencies {
 	implementation 'com.google.apis:google-api-services-youtube:v3-rev20230816-2.0.0'
 	implementation 'com.google.http-client:google-http-client-jackson2:1.39.2'
 
+	// H2 데이터베이스
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.h2database:h2' // 스프링부트 인메모리 데이터베이스 -> 실행할 때마다 데이터 초기화
+
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	//implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
+	// Spring Security 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	// thymeleaf 템플릿 엔진과 Spring Security를 호환해주는 라이브러리
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
 }
 
 tasks.named('test') {

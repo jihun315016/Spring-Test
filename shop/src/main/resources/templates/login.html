@@ -20,6 +20,8 @@
     <h4>아이디나 비밀번호 틀림</h4>
 </div>
 
+<!-- /login이라는 경로명에 POST 요청은 스프링 시큐리티의 규칙 -->
+<!-- /login에 POST 요청을 하면 서버에서 loadUserByUsername를 상속받는 클래스를 찾아 loadUserByUsername 메서드를 자동으로 호출한다. -->
 <form action="/login" method="POST">
     <input name="username">
     <input name="password" type="password">
