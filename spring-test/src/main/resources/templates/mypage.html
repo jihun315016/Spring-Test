@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+
+</head>
+<body>
+
+<h4>My Page</h4>
+
+<!-- 타임리프로 로그인된 유저 정보 넣는 방법 -->
+<!-- 이렇게하면 이 안에 로그인 된 유저의 정보가 들어있음 -->
+
+ <!-- admin -->
+<div sec:authentication="principal.username"></div> 
+<!-- 권한 여부 == 표시 여부 -->
+<div sec:authorize="hasAuthority('일반유저')">hello</div> 
+<!-- 인증 여부 == 표시 여부 -->
+<div sec:authorize="isAuthenticated()">world</div>
+</body>
+</html>
