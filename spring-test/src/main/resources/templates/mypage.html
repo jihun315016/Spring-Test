@@ -16,7 +16,7 @@
 <!-- 타임리프로 로그인된 유저 정보 넣는 방법 -->
 <!-- 이렇게하면 이 안에 로그인 된 유저의 정보가 들어있음 -->
 
- <!-- admin -->
+<!-- admin -->
 <div sec:authentication="principal.username"></div> 
 <!-- 권한 여부 == 표시 여부 -->
 <div sec:authorize="hasAuthority('일반유저')">hello</div> 
