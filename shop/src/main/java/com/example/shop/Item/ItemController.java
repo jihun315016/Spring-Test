@@ -1,6 +1,8 @@
 package com.example.shop.Item;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -136,5 +138,20 @@ public class ItemController {
         var result = new BCryptPasswordEncoder().encode("해싱할 문자");
         System.out.println(result);
         return "redirect:/list";
+    }
+
+
+    @GetMapping("/list/page/{abc}")
+    String getListPage(Model model, @PathVariable Integer abc) {
+        // 파라미터 : 몇 번째 페이지, 한 페이지 당 몇 개
+        // 2, 3이면 0부터 세서 11번부터 15번
+        Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc - 1, 3));
+        model.addAttribute("items", result);
+        // List 말고 Page 넣어도 상관 없음, 반복 잘 돌아감
+
+        // result.getTotalPages() // 전체 페이지 개수
+        // result.hasNext() // 다음 페이지가 있는지
+
+        return "list.html";
     }
 }

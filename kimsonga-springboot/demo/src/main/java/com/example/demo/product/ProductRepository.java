@@ -3,6 +3,7 @@ package com.example.demo.product;
 import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,9 @@ public class ProductRepository {
     // 디비 속성값을 들고, 자바-디비 간 터널을 뚫어줌
 //    @Autowired
 //    DataSource dataSource;
+
+    @Autowired
+    EntityManager entityManager;
 
     // DataSource로 터널 뚫어보기 == db 커넥션 만들기
     // 쓸 일 잘 없으니까 가볍게 보기

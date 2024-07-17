@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -56,4 +57,35 @@ public class MemberController {
         // 세션 정보를 디비에 저장하고 싶으면 spring-session-jdbc 라이브러리 찾아보기
         return "mypage.html";
     }
+
+
+    @ResponseBody
+    @GetMapping("/user/1")
+    public MemberDto getUser() {
+        var a = memberRepository.findById(1L);
+        var result = a.get();
+        var data = new MemberDto(result.getUsername(), result.getDisplayName());
+        data.id = 1L;
+        return data;
+    }
 }
+
+
+class MemberDto {
+    public String userName;
+    public String displayName;
+
+    public Long id;
+
+    MemberDto(String a, String b) {
+        this.userName = a;
+        this.displayName = b;
+    }
+
+    MemberDto(String a, String b, Long id) {
+        this.userName = a;
+        this.displayName = b;
+        this.id = id;
+    }
+}
+
