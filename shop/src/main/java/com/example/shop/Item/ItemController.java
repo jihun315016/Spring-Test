@@ -56,6 +56,7 @@ public class ItemController {
     //ResponseEntity<String> detail(@PathVariable Long id, Model model) {
     String detail(@PathVariable Long id, Model model) throws Exception {
         Optional<Item> result = itemRepository.findById(id);
+        
         // Optional 타임은 이 변수가 비어있을 수도 있고 Item 타입일 수도 있다는 뜻
         // 결과가 없는 경우를 대비하기 위한 타입
         // 이 변수의 값을 쓸 때는 .get()을 써야 함
