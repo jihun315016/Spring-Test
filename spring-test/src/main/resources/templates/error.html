@@ -1,9 +1,22 @@
-<!-- 타임리프를 설치한 경우 오류가 나타나면 error.html 파일을 자동으로 보여준다. -->
-<h4>에러페이지임</h4>
-<!-- 타임리프 에러 페이지에서만 쓸 수 있는 변수들 -->
-<!-- 근데 rest api 서버에서는 의미 없음 -->
-<p th:text="${status}"></p>
-<p th:text="${error}"></p>
-<p th:text="${path}"></p>
-<p th:text="${message}"></p>
-<p th:text="${exception}"></p>
+<!DOCTYPE html>
+<html lang="en" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <p th:text="${errorMessage}">An unexpected error has occurred.</p>
+    <p>Error code: <span th:text="${errorCode}">500</span></p>
+    <p>Please try again later or contact our support team if the issue persists.</p>
+
+    <h4>여기는 에러 페이지</h4>
+    <!-- 타임리프 에러 페이지에서만 쓸 수 있는 변수들 -->
+    <!-- 근데 rest api 서버에서는 의미 없음 -->
+    <p th:text="${status}"></p>
+    <p th:text="${error}"></p>
+    <p th:text="${path}"></p>
+    <p th:text="${message}"></p>
+    <p th:text="${exception}"></p>
+</body>
+</html>
