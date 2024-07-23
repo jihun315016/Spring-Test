@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller // 그냥 화면(뷰)를 던져주는 API가 되는 것
 @ResponseBody // response body에 답아서 데이터를 돌려주는 REST API
 public class ProductContoller {
@@ -22,7 +24,7 @@ public class ProductContoller {
     // 상품 조회
     // 상품 여러 개를 처리할 수도 있고 단일로 처리할 수도 있으니까 복수형으로 value 지정
     @RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
-    public String findProduct(@PathVariable("id") int id) {
+    public List<Product> findProduct(@PathVariable("id") int id) {
         // 현재 화면이 아니라 데이터를 던지는 상황
         // 데이터를 던진다는 것은 그냥 API가 아니라 REST API
         // REST API는 reponse body라고 하는 그 body에다가

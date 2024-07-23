@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity // 엔티티 매니저가 관리하는걸로 등록(스프링 빈처럼)
 public class Product {
+    private int id;
     private String name;
     private int price;
     private  String description;
