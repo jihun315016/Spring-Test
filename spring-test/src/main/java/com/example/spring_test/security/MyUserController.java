@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RequiredArgsConstructor
@@ -61,5 +64,15 @@ public class MyUserController {
             // 인증 후 로그아웃 상태의 경우 auth가 null이 아님
             return "login.html";
         }
+    }
+
+
+    @ResponseBody
+    @PostMapping("/security_test")
+    public MyUser securityTest() {
+        return new MyUser().builder()
+            .userId("myid")
+            .password("1234")
+            .build();
     }
 }

@@ -1,3 +1,8 @@
+INSERT INTO food (id, name, price, description)
+VALUES
+(1, 'rice', 1000, '밥'),
+(2, 'meat', 3000, '고기');
+
 INSERT INTO item (id, name) VALUES (1, 'item01');
 INSERT INTO item (id, name) VALUES (2, 'item02');
 INSERT INTO item (id, name) VALUES (3, 'item03');

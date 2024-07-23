@@ -18,6 +18,7 @@
     <form action="/login" method="POST">
         <input name="username">
         <input name="password" type="password">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <button type="submit">login</button>
     </form>
 </body>
