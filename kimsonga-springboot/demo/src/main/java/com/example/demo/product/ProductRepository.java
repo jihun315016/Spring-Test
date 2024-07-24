@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Repository;
@@ -36,9 +37,11 @@ public class ProductRepository {
         // return db.get(idx);
 
         // createQuery : 쿼리를 생성해 줌
-        // 파라미터 : jpql, 엔티티로 사용할 클래스
+        // 파라미터 : jpql, 쿼리 결과로 나오는 타입
         // SELECT p FROM 클래스 별칭, * 대신 별칭 쓰는거
-        return entityManager.createQuery("SELECT p FROM Product p", Product.class).getResultList();
+        TypedQuery<Product> query = entityManager.createQuery("SELECT p FROM Product p", Product.class);
+        List<Product> products = query.getResultList();
+        return products;
     }
 
     public void save(String productName) {

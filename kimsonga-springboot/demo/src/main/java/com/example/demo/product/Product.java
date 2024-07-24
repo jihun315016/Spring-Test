@@ -1,6 +1,7 @@
 package com.example.demo.product;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity // 엔티티 매니저가 관리하는걸로 등록(스프링 빈처럼)
 public class Product {
+    @Id
     private int id;
     private String name;
     private int price;
