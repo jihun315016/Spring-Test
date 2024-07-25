@@ -31,7 +31,7 @@ public class ProductRepository {
     private Map<Integer, String> db = new HashMap<>();
     private int id = 1;
 
-    public List<Product> findProduct(int idx) {
+    public List<Product> findProduct() {
         // Map에서 get 메서드는 있으면 있는거고 없으면 없는거고 하는거
         // 이런 경우엔 예외 처리를 해주면 좋다. (없는 키)
         // return db.get(idx);
@@ -44,7 +44,11 @@ public class ProductRepository {
         return products;
     }
 
-    public void save(String productName) {
-        db.put(id++, productName);
+    public void save(Product product) {
+        // db.put(id++, productName);
+        entityManager.persist(product);
     }
+
+    // 레포지토리 : C R U D 단위
+    // 서비스 : 비즈니스 로직 단위 <- 트랜잭션은 서비스에다가 구현하는 것
 }

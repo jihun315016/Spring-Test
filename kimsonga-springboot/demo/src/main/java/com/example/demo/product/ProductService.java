@@ -1,5 +1,6 @@
 package com.example.demo.product;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +16,16 @@ public class ProductService {
     ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-    public List<Product> findProduct(int id)
+    public List<Product> findProduct()
     {
-        return productRepository.findProduct(id);
+        return productRepository.findProduct();
     }
 
-    public void saveProduct(String productName) {
-        productRepository.save(productName);
+    // 저장하는데 트랜잭션 안 걸면 아래 예외 발생
+    // InvalidDataAccessApiUsageException
+    @Transactional
+    public void saveProduct(Product product) {
+        productRepository.save(product);
     }
 
 //    public void makeConnection() {
