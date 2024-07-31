@@ -2,15 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <footer th:fragment="header">
     <p>This is header</p>
+    <div sec:authorize="isAuthenticated()">world</div> <!-- 유저가 로그인 한 경우만 world 보여줌 -->
+    <div sec:authorize="isAnonymous()">home</div> <!-- 유저가 로그인 안 한 경우만 home 보여줌 -->
     <script>
-        fetch('/test', { 
-            method : 'GET' 
-        })
-        .then(r => r.text())
-        .then((a) => {
-            //location.reload();
-            console.log(a);
-        })
+        // fetch('/test', { 
+        //     method : 'GET' 
+        // })
+        // .then(r => r.text())
+        // .then((a) => {
+        //     //location.reload();
+        //     console.log(a);
+        // })
     </script>
 </footer>
 </html>
