@@ -33,7 +33,7 @@ public class ProductContoller {
 
         // System.out.println은 사용자에게 보여주는 부분이기 때문에
         // 시스템 내부적으로 데이터를 확인하려면 로그를 사용하는 걸 권고
-        return productService.findProduct();
+        return productService.findProducts();
         // JPA는 자바의 영속성을 지켜주는 친구
     }
 
