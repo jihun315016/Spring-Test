@@ -1,7 +1,7 @@
-INSERT INTO food (id, name, price, description)
+INSERT INTO food (id, name, price)
 VALUES
-(1, 'rice', 1000, '밥'),
-(2, 'meat', 3000, '고기');
+(1, 'rice', 1000),
+(2, 'meat', 3000);
 
 INSERT INTO item (id, name) VALUES (1, 'item01');
 INSERT INTO item (id, name) VALUES (2, 'item02');

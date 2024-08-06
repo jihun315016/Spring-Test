@@ -22,17 +22,17 @@ public class SecurityConfig {
     }
 
     // CSRF 공격 방지를 위해 랜덤한 토큰 생성
-    @Bean
-    public CsrfTokenRepository csrfTokenRepository() {
-        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
-        repository.setHeaderName("X-XSRF-TOKEN");
-        return repository;
-    }
+    // @Bean
+    // public CsrfTokenRepository csrfTokenRepository() {
+    //     HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+    //     repository.setHeaderName("X-XSRF-TOKEN");
+    //     return repository;
+    // }
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         // CSRF 보안 기능 비활성화
-        // httpSecurity.csrf(csrf -> csrf.disable());
+        httpSecurity.csrf(csrf -> csrf.disable());
         
         // CSRF 보안 기능 활성화
         // CSRF는 사용자 인증 정보를 이용하여 악의적인 요청을 보내는 공격
@@ -40,9 +40,9 @@ public class SecurityConfig {
         // 1. <form> 태그 내부에 아래 태그 추가하기 
         // - <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> 추가하기
         // 2. ajax 요청 시에도 CSRF 토큰을 넣어서 요청 보내기
-        httpSecurity.csrf(csrf -> csrf.csrfTokenRepository(csrfTokenRepository())
-               .ignoringRequestMatchers("/login") // CSRF 기능에서 제외할
-        );
+        // httpSecurity.csrf(csrf -> csrf.csrfTokenRepository(csrfTokenRepository())
+        //        .ignoringRequestMatchers("/login") // CSRF 기능에서 제외할
+        // );
 
 
         // URL 기반 권한 설정
